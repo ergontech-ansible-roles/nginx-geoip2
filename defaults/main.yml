@@ -1,20 +1,5 @@
 ---
 
-geoip_packages:
-  - libmaxminddb0
-  - libmaxminddb-dev
-  - mmdb-bin
-  - geoipupdate
+ 
 
-geoip_databases: GeoLite2-Country
-geoip_user: "{{ ansible_ssh_user }}"
-geoip_group: "{{ ansible_ssh_user }}"
-geoip_config_location: "/home/{{ geoip_user }}/GeoIp.conf"
-
-geoip_nginx: true
-geoip_nginx_country:
-  - settings:
-      - "auto_reload 5m;"
-      - "$geoip2_data_country_code default=US source=$variable_with_ip country iso_code;"
-
-geoip_nginx_city: false
+nginx_geoip2_city: false

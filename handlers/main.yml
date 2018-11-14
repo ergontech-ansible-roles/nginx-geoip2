@@ -5,6 +5,3 @@
   systemd:
     name: nginx.service
     state: restarted
-  tags:
-  - nginx
-
