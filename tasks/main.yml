@@ -1,7 +1,5 @@
 ---
 
-- debug: var=nginx_geoip2_country
-
 - name: Install geoip snippets
   become: yes
   template:
