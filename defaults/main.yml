@@ -2,3 +2,4 @@
 
 nginx_geoip2_country: false
 nginx_geoip2_city: false
+nginx_geoip_db_path: /usr/share/GeoIP
