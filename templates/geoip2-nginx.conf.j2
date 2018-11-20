@@ -3,7 +3,7 @@
 
 {%  if nginx_geoip2_country  %}
     {%  if nginx_geoip2_country.settings is defined %}
-geoip2 {{ nginx_geoip_db_path }}/maxmind-country.mmdb {
+geoip2 {{ nginx_geoip_country_db_path }} {
         {%  for config in nginx_geoip2_country.settings %};
     {{ config }};
         {%  endfor %}
@@ -19,7 +19,7 @@ fastcgi_param {{ variable }} {{ param }};
 
 {%  if nginx_geoip2_city  %}
     {%  if nginx_geoip2_city.settings is defined %}
-geoip2 {{ nginx_geoip_db_path }}/maxmind-city.mmdb {
+geoip2 {{ nginx_geoip_city_db_path }} {
         {%  for config in nginx_geoip2_city.settings %};
     {{ config }};
         {%  endfor %}
