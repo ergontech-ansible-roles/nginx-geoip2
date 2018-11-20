@@ -1,2 +1,12 @@
 ---
 
+- name: Install geoip snippets
+  become: yes
+  template:
+    src: geoip2-nginx.conf.j2
+    dest: /etc/nginx/snippets/geoip2.conf
+    mode: 0664
+  notify: restart nginx
+  tags:
+  - geoip-configure
+  - nginx-configure

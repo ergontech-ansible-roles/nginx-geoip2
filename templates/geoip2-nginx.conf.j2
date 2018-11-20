@@ -1,0 +1,34 @@
+#jinja2: lstrip_blocks: True
+# {{ ansible_managed }}
+
+{%  if nginx_geoip2_country  %}
+    {%  if nginx_geoip2_country.settings is defined %}
+geoip2 /etc/maxmind-country.mmdb {
+        {%  for config in nginx_geoip2_country.settings %}
+    {{ config }};
+        {%  endfor %}
+}
+    {%  endif %}
+
+    {% if nginx_geoip2_country.fastcgi_params is defined %}
+        {%  for variable, param in nginx_geoip2_country.fastcgi_params.iteritems() %}
+fastcgi_param {{ variable }} {{ param }};
+        {%  endfor %}
+    {% endif %}
+{%  endif %}
+
+{%  if nginx_geoip2_city  %}
+    {%  if nginx_geoip2_city.settings is defined %}
+geoip2 /etc/maxmind-city.mmdb {
+        {%  for config in nginx_geoip2_city.settings %}
+    {{ config }};
+        {%  endfor %}
+}
+    {%  endif %}
+
+    {% if nginx_geoip2_city.fastcgi_params is defined %}
+        {%  for variable, param in nginx_geoip2_city.fastcgi_params.iteritems() %}
+fastcgi_param {{ variable }} {{ param }};
+        {%  endfor %}
+    {% endif %}
+{%  endif %}
